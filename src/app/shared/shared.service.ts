@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-var representative ;
 
 @Injectable()
 export class SharedDataService {
+    representative: string;
     constructor() { }
 
-    setRepresentative (rep:string) {
-        representative = rep;
+    setRepresentative(rep: string) {
+        this.representative = rep;
     }
-    
+
     getRepresentative() {
-        return representative;
+        return this.representative;
     }
 
 }
