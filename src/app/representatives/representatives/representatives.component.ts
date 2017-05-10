@@ -1,8 +1,8 @@
-import { Component, Input , OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { PeopleService } from '../../services/people.service';
 import { HeaderComponent } from '../../header/header.component'
-import { SharedDataService  } from '../../shared/shared.service';
+import { SharedDataService } from '../../shared/shared.service';
 
 @Component({
     selector: 'representatives',
@@ -15,16 +15,18 @@ export class RepresentativesComponent implements OnInit {
     //public hide = false;
     constructor(
         private authenticationService: AuthenticationService,
-        private SharedDataService:SharedDataService,
         private peopleService: PeopleService) { }
+
     isDetailed = false;
     active = "";
     private representatives;
+    private searched;
     private backuprepresentatives;
     private selected;
+
     ngOnInit() {
         this.authenticationService.checkCredentials();
-        this.SharedDataService.setRepresentative(null);
+        this.setRepresentative(null);
         this.peopleService.getRepresentatives()
             .subscribe((data) => {
                 this.representatives = data;
@@ -34,16 +36,11 @@ export class RepresentativesComponent implements OnInit {
     doLogout() {
         this.authenticationService.doLogout();
     }
+    setRepresentative(value) {
+        SharedDataService.sharedRepresentative = value;
+    }
+
     onSelect(newVal, el) {
-        if (typeof (this.selected) == 'object') {
-            this.representatives = [];
-            this.representatives.push(this.selected);
-        }
-        else {
-            this.representatives = []
-            this.representatives = this.backuprepresentatives;
-            el.blur();
-            el.focus();
-        }
+        this.searched = (typeof (this.selected) == 'object') ? this.selected.name : null;
     }
 }

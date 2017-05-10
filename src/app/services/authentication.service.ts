@@ -24,9 +24,10 @@ export class AuthenticationService {
 
   doLogin(user) {
     this.peopleService.getRepresentatives()
-            .subscribe((data) => {
-                USERS = data;
-            });
+                      .subscribe((data) => {
+                          USERS = data;
+                      });
+
     var authenticatedUser = USERS.find(u => u.email === user.email);
     if (authenticatedUser) {
       localStorage.setItem("currentUser", authenticatedUser.email);

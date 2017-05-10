@@ -115,7 +115,7 @@ export class RepresentativeSignupComponent implements OnInit {
     this.peopleService.adduser(this.form.value).subscribe(
       data => {
         this.isSuccess = true;
-        window.setTimeout(() => this.router.navigate(['Login']), 2000);
+        window.setTimeout(() => this.router.navigate(['Login']), 1000);
       },
       (err) => {
         this.isError = true;

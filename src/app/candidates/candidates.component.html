@@ -3,15 +3,14 @@
     <div class="right">
         <input ng2-auto-complete #focusable id="searchInput" class="form-control mb-2 mr-sm-2 mb-sm-0 search-input" [(ngModel)]="selected"
             placeholder="חפש מועמדים לשידוך" display-property-name="name" [source]="users" no-match-found-text="No Match Found"
-            list-formatter="(age) name" max-num-list="5" (valueChanged)="onSelect(this,focusable)" min-chars="1" />
-        <!--<br/>selected model4: {{//selected}}<br/><br/>-->
+            list-formatter="(age) name" max-num-list="5"  (blur)="onSelect(this,focusable)" (keyup)="onSelect(this,focusable)" min-chars="1" />
     </div>
 </div>
 <br/>
-<h3 *ngIf="representative">Candidates represented By : {{representative}}</h3>
+<h3 style="margin-left:10px" *ngIf="representative">Candidates represented By : <em>{{representative}}</em></h3>
 <ul class="list-group">
     <li *ngFor="let user of users">
-            <div class="panel panel-default" [hidden]="representative && user.representative != representative">
+            <div class="panel panel-default" [hidden]="searched && searched != user.name" [hidden]="representative && user.representative != representative">
                 <section>
                     <a [routerLink]="['/Candidates', user.id]">
                         <div class="panel-body">

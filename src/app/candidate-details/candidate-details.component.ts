@@ -17,10 +17,17 @@ export class CandidateDetailsComponent implements OnInit {
   constructor(private PeopleService: PeopleService,
               private route: ActivatedRoute,
               private router: Router,
-              private SharedDataService: SharedDataService) { }
-
+              ) { }
+              
+  setRepresentative (value) {
+        SharedDataService.sharedRepresentative = value;
+  }
+    
+  getRepresentative() {
+      return SharedDataService.sharedRepresentative;
+  }
   ngOnInit() {
-    this.representative = this.SharedDataService.getRepresentative();
+    this.representative = this.getRepresentative();
     this.PeopleService.getSpecific(this.route.snapshot.params['id'])
       .subscribe(data => {
         this.user = data;
@@ -28,7 +35,7 @@ export class CandidateDetailsComponent implements OnInit {
       
   }
   showFullList(){
-    this.SharedDataService.setRepresentative(null);
+    this.setRepresentative(null);
     this.router.navigate(['/Candidates']);
   }
   back(){

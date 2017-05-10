@@ -12,16 +12,18 @@ import { SharedDataService  } from '../../shared/shared.service';
 export class RepresentativeDetailsComponent implements OnInit {
   representative: string;
   representativeName: string;
-  constructor(private SharedDataService:SharedDataService,private PeopleService: PeopleService, private route: ActivatedRoute) { }
+  constructor(private PeopleService: PeopleService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.PeopleService.getSpecificRepresentative(this.route.snapshot.params['id'])
       .subscribe(data => {
         this.representative = data;
         this.representativeName = data[0].name;
-        this.SharedDataService.setRepresentative(this.representativeName);
+        this.setRepresentative(this.representativeName);
       });
-      
+  }
+ setRepresentative (value) {
+        SharedDataService.sharedRepresentative = value;
   }
 
 }
