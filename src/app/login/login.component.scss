@@ -1,0 +1,39 @@
+
+.center-block {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.panel-heading {
+    padding: 5px 15px;
+    text-align: right;
+    color: #fff;
+    background-color: rgba(64, 31, 31, 0.85);
+}
+
+.panel-footer {
+    background-color: rgba(64, 31, 31, 0.85);
+	padding: 1px 15px;
+	color: #fff;
+    text-align: right;
+}
+.signup-btn {
+    color: #fcf8e3;
+    font-weight: bold;
+    &:hover {
+        color:#70c3d0;
+        cursor:pointer;
+    }
+}
+.profile-img {
+    background-image: url("../../assets/lechaim.jpg");
+    background-size: 250px 198px;
+    background-repeat: no-repeat;
+    background-position: 52% 50%;
+    width: 292px;
+    height: 139px;
+    margin: 0 auto 10px;
+    display: block;
+   -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}

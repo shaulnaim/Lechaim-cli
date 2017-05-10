@@ -1,0 +1,55 @@
+@import '~variables.scss';
+.right {
+  width: 29%;
+  margin-left: 70%;
+}
+.search-input {
+  text-align: right;
+}
+.list-group {
+  list-style: none;
+  min-height: 160px;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  .panel-body {
+    padding: 0;
+    width: 100%;
+    background: $main-brown-color;
+    &:hover {
+      background-color:$brown-light-color;
+    }
+    &:nth-child(1) {
+      margin-top: 30px;
+    }
+    &.active {
+      background: #24262c;
+    }
+  }
+
+  .photo {
+    float: left;
+    margin-right: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    img {
+      padding-bottom: 20PX;
+    }
+  }
+
+  .user-info {
+    vertical-align: middle;
+    & h1,h4,h5 {
+      margin: 0 0;
+      text-shadow: $title-text-shadow;
+      color: $title-name-color;
+      padding-top: 20px;
+    }
+
+    & p {
+    text-align: center;
+    }
+   
+  }
+}

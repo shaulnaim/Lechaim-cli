@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="form-container col-md-6 col-md-offset-3">
+  <h2>הוסף מועמד\ת </h2>
+  <hr>
+  <div>
+    <form #newCandidateForm="ngForm" (ngSubmit)="saveCandidate(newCandidateForm.value)" autocomplete="off" novalidate>
+      <div class="form-group" [ngClass]="{'error': newCandidateForm.controls.name?.invalid && (newCandidateForm.controls.name?.touched || mouseoverSubmit)}">
+        <label for="candidateName">Candidate Name:</label>
+        <em *ngIf="newCandidateForm.controls.name?.invalid && (newCandidateForm.controls.name?.touched|| mouseoverSubmit)">Required</em>
+        <input (ngModel)="name" name="name" required id="name" type="text" class="form-control" placeholder="Name of your candidate..."
+        />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newCandidateForm.controls.representative?.invalid && (newCandidateForm.controls.representative?.touched || mouseoverSubmit)}">
+        <label for="candidateRepresentative">Candidate Representative:</label>
+        <em *ngIf="newCandidateForm.controls.representative?.invalid && (newCandidateForm.controls.representative?.touched || mouseoverSubmit)">Required</em>
+        <input (ngModel)="representative" required name="representative" id="candidateRepresentative" type="text" class="form-control"
+          placeholder="Representative of candidate..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newCandidateForm.controls.date?.invalid && (newCandidateForm.controls.date?.touched || mouseoverSubmit)}">
+        <label for="candidateDate">Candidate Birth Date:</label>
+        <em *ngIf="newCandidateForm.controls.date?.invalid && (newCandidateForm.controls.date?.touched || mouseoverSubmit)">Required</em>
+        <input (ngModel)="date" name="date" required id="candidateDate" type="text" class="form-control" placeholder="format (mm/dd/yyyy)..."
+        />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newCandidateForm.controls.info?.invalid && (newCandidateForm.controls.info?.touched || mouseoverSubmit)}">
+        <label for="candidateinfo">Candidate info:</label>
+        <em *ngIf="newCandidateForm.controls.info?.invalid && (newCandidateForm.controls.info?.touched || mouseoverSubmit)">Required</em>
+        <textarea (ngModel)="info" name="info" required id="candidateinfo" class="form-control" placeholder="candidate info..."></textarea>
+      </div>
+      <div ngModelGroup="location">
+        <div class="form-group">
+          <label for="address">Candidate Location:</label>
+          <input (ngModel)="address" name="address" id="address" type="text" class="form-control" placeholder="Address of candidate..."
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input (ngModel)="city" name="city" id="city" type="text" class="form-control" placeholder="City..." />
+          </div>
+          <div class="col-md-6">
+            <input (ngModel)="country" name="country" id="country" type="text" class="form-control" placeholder="Country..." />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="onlineUrl">Online Url:</label>
+        <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..."
+        />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newCandidateForm.controls.avatar?.invalid && (newCandidateForm.controls.avatar?.touched || mouseoverSubmit)}">
+        <label for="avatar">Image:</label>
+        <em *ngIf="newCandidateForm.controls.avatar?.invalid && newCandidateForm.controls.avatar?.touched && (newCandidateForm.controls.avatar?.errors.required || mouseoverSubmit)">Required</em>
+        <em *ngIf="newCandidateForm.controls.avatar?.invalid && newCandidateForm.controls.avatar?.touched  && (newCandidateForm.controls.avatar?.errors.pattern || mouseoverSubmit)">Must be a png or jpg url</em>
+        <input (ngModel)="avatar" name="avatar" required pattern=".*\/.*.(png|jpg)" id="avatar" type="text" class="form-control"
+          placeholder="url of image..." />
+        <img [src]="newCandidateForm.controls.avatar.value" *ngIf="newCandidateForm.controls.avatar?.valid" />
+      </div>
+      <span (mouseenter)="mouseoverSubmit=true" (mouseleave)="mouseoverSubmit=false">  
+         <button type="submit" [disabled]="newCandidateForm.invalid" class="btn btn-primary">Save</button>
+      </span>
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>

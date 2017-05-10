@@ -1,0 +1,33 @@
+<app-header></app-header>
+<ul>
+    <li *ngFor="let selected of user">
+        <div>
+            <div class="panel panel-info ">
+                <div class="panel-heading">
+                    <h2>{{selected.name}}</h2>
+                    <div>
+                        <img width="200" height="200" [src]="selected.avatar">
+                    </div>
+                    <h3>{{selected.age}} :גיל</h3><span>{{selected.email}}</span>
+                    <div class="panel-body">
+                        <p>Ian American actress and producer. She made her acting debut with a minor role in the 1987 thriller
+                            Hangmen, and made her television debut in the film Bionic Showdown: The Six Million Dollar Man
+                            and the Bionic Woman (1989), and played the lead role in the short-lived NBC sitcom Working Girl.
+                            Her breakthrough role was in the film Demolition Man (1993). She subsequently starred in several
+                            successful films including Speed (1994),and the Bionic Woman (1989), and played the lead role in the short-lived NBC sitcom Working Girl.
+                            Her breakthrough role was in the film Demolition Man (1993). She subsequently starred in several
+                            successful films including Speed  While You Were Sleeping (1995), The Net (1995), A Time
+                            to Kill (1996), Hope Floats (1998), and Practical Magic (1998)
+                        </p>
+                        <div class="panel">
+                            <a class="btn btn-success" role="button" href="#">צור קשר עם מייצגת</a>
+                            <a class="btn btn-info" role="button" href="#">שמור לאחר-כך</a>
+                            <a class="btn btn-primary" role="button" (click)="showFullList()">  כל המועמדים </a>
+                            <a *ngIf="representative" class="btn btn-primary" role="button" (click)="back()">{{representative}} :מועמדי </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

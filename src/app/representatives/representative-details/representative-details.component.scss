@@ -1,0 +1,27 @@
+@import '~variables.scss';
+li {
+    list-style: none;
+}
+.panel-heading {
+    margin-right: 4rem;
+    background: $brown-light-color;
+    font-weight: bold;
+    text-align: center;
+    height: 80%;
+    h2,h3 {
+        color: $title-name-color;
+        text-shadow: $title-text-shadow;
+    }
+}
+.panel-body {
+    color:antiquewhite;
+    .panel {
+    background-color: transparent !important;
+    margin-top: 9rem;
+    }
+
+    p {
+      width: 800px;
+      margin-left: 15%;   
+    }
+}

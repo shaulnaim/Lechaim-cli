@@ -2,9 +2,22 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
+
 export class AppComponent {
-  title = 'app works!';
+  constructor() { }
+}
+
+export class Const {
+  public static BASE_URL = 'http://localhost:3000/';
+}
+
+export class IsDirty {
+ public checkDirtyState(component) {
+    if (component.isDirty)
+      return window.confirm('You have not saved this candidate, Do you really want to cancel?');
+    return true;
+  }
+
 }

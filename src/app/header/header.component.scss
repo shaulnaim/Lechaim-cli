@@ -1,0 +1,51 @@
+@import '~variables.scss';
+
+header {
+   .container {
+     width: 100%;
+   }
+   
+   li > a.active {
+     background-color: saddlebrown;
+     color:#222;
+   }
+    nav {
+      background: $main-brown-color;
+    }
+    .hide {
+      display: none;
+    }
+    .navbar-default {
+      width: 129rem;
+      margin-left: -2rem;
+    }
+    .navbar-default .navbar-nav>li>a {
+        color: navajowhite;
+        &:hover{
+          color: #FFF;
+        }
+    }
+    .navbar-brand {
+      padding: 0px;
+    }
+    .navbar-brand>img {
+      height: 100%;
+      padding: 15px;
+      width: auto;
+    }
+    .header .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .brand-img {
+        background-image: url("../../assets/logo.png");
+        background-size: 50px 40px;
+        background-repeat: no-repeat;
+        background-position: 8% 41%;
+        width: 170px;
+        height: 42px;
+        display: block;
+        margin-top: 6px;
+        
+    }
+}

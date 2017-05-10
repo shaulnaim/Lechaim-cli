@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="parent">
+    <div class="right">
+        <input ng2-auto-complete #focusable id="searchInput" class="form-control mb-2 mr-sm-2 mb-sm-0 search-input" [(ngModel)]="selected" placeholder="חפש נציגים"
+            display-property-name="name" [source]="representatives" no-match-found-text="No Match Found" list-formatter="(region) name" max-num-list="5"
+            (valueChanged)="onSelect(this,focusable)" min-chars="1" />
+    </div>
+</div>
+<br/>
+<ul class="list-group">
+    <li *ngFor="let representative of representatives">
+        <div class="panel panel-default">
+            <section >
+                <a [routerLink]="['/representative/Representatives', representative.id]">
+                    <div class="panel-body">
+                        <div class="photo">
+                            <img [src]="representative.avatar">
+                        </div>
+                        <div class="user-info">
+                            <div >
+                                <h1>{{representative.name}}</h1>
+                                <h4>Region: {{representative.region}}</h4>
+                                <h5>Email: {{representative.email}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </li>
+</ul>

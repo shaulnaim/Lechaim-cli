@@ -1,0 +1,20 @@
+@import '~variables.scss';
+//@import '../node_modules/materialize-css/dist/css/materialize.css';
+body {
+     display: flex;
+     min-height: 100vh;
+    flex-direction: column;
+    footer.page-footer{
+        background: $main-brown-color;
+        .footer-copyright {
+            .container{
+                width: 100%;
+                color:#fff;
+            }
+        }
+    }
+ }
+ main {
+     flex: 1 0 auto;
+ }
+ 
