@@ -25,9 +25,12 @@
         color: #fff;
         line-height: 30px;
     }
-    .btn {
-        margin-bottom: 10px;
-        width: 10em;
+    .form-buttons {
+        margin-left: 25%;
+        .btn {
+            margin-bottom: 10px;
+            width: 10em;
+        }  
     }
     em {
         float:right;

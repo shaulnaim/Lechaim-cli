@@ -13,7 +13,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { PeopleService } from './services/people.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { dummyComponent } from './dummy/dummy.component';
-import {AuthGuard} from './route-guards/auth.guard';
+import { AuthGuard } from './route-guards/auth.guard';
+import { DetailsResolver } from './services/details-resolver.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AuthGuard} from './route-guards/auth.guard';
   exports: [],
   providers: [AuthenticationService,
               PeopleService,
+              DetailsResolver,
               AuthGuard,
               {
                  provide: 'canDeactivateCreateCandidate',

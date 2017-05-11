@@ -5,13 +5,15 @@ import { CreateCandidateComponent } from './create-candidate/create-candidate.co
 import { Routes } from '@angular/router';
 import { dummyComponent } from './dummy/dummy.component';
 import { AuthGuard } from './route-guards/auth.guard';
+import { DetailsResolver } from './services/details-resolver.service';
 
 export const ROUTES: Routes = [
     { path: 'Candidates',
       component: CandidatesComponent },
     { path: 'Candidates/:id',
       component: CandidateDetailsComponent,
-      canActivate:[AuthGuard]},
+      canActivate:[AuthGuard],
+      resolve: {details: DetailsResolver}},
     { path: 'CreateCandidate',
       component: CreateCandidateComponent,
       canActivate:[AuthGuard],

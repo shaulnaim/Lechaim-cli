@@ -12,6 +12,7 @@ import 'rxjs/add/operator/catch';
 export class PeopleService {
     // Resolve HTTP using the constructor
     constructor(private http: Http) { }
+    
     getMyData():Observable<ICandidate>  {
         // ...using get request
         return this.http.get(Const.BASE_URL + 'people')

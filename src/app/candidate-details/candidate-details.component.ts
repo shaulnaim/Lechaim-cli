@@ -17,7 +17,7 @@ export class CandidateDetailsComponent implements OnInit {
   constructor(private PeopleService: PeopleService,
               private route: ActivatedRoute,
               private router: Router,
-              ) { }
+              ) {}
               
   setRepresentative (value) {
         SharedDataService.sharedRepresentative = value;
@@ -28,11 +28,7 @@ export class CandidateDetailsComponent implements OnInit {
   }
   ngOnInit() {
     this.representative = this.getRepresentative();
-    this.PeopleService.getSpecific(this.route.snapshot.params['id'])
-      .subscribe(data => {
-        this.user = data;
-      });
-      
+    this.user = this.route.snapshot.data['details']  
   }
   showFullList(){
     this.setRepresentative(null);
