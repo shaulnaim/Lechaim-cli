@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
+import { DeactivateRouteWhenDirty  } from './shared/shared.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CandidatesComponent } from './candidates/candidates.component';
@@ -33,20 +34,17 @@ import { DetailsResolver } from './services/details-resolver.service';
   ],
   exports: [],
   providers: [AuthenticationService,
-              PeopleService,
-              DetailsResolver,
-              AuthGuard,
-              {
-                 provide: 'canDeactivateCreateCandidate',
-                 useValue: checkDirtyState
-               }
+    PeopleService,
+    DetailsResolver,
+    AuthGuard,
+    {
+      provide: 'canDeactivateCreateCandidate',
+      useValue: DeactivateRouteWhenDirty.checkDirtyState
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
 
-function checkDirtyState(component:CreateCandidateComponent) {
-    if (component.isDirty) 
-        return window.confirm ('You have not saved this candidate, Do you really want to leave ?');
-    return true;
-}
+
+

@@ -106,12 +106,6 @@ export class RepresentativeSignupComponent implements OnInit {
 
 
   processForm() {
-    debugger;
-    //     this.form.controls[control].markAsDirty();
-    // };
-
-    // if (this.form.dirty && this.form.valid) {
-    // My submit logic
     this.peopleService.adduser(this.form.value).subscribe(
       data => {
         this.isSuccess = true;
