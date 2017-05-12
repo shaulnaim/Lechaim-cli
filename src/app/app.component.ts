@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'lechaim-app',
   templateUrl: './app.component.html'
 })
 
