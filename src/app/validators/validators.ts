@@ -1,7 +1,7 @@
 /*
   Custom validators to use everywhere.
 */
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
 /**
  * SINGLE FIELD VALIDATORS for email
  */
@@ -15,23 +15,19 @@ export function validateEmail(control: FormControl) {
 }
 
 // FORM GROUP VALIDATORS
-export function matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): { [key: string]: any } => {
-        let password = group.controls[passwordKey];
-        let confirmPassword = group.controls[confirmPasswordKey];
-
-        if (password.value !== confirmPassword.value) {
-            return {
-                mismatchedPasswords: true
-            };
-        }
-    }
+export function matchingPasswords(control:AbstractControl) {
+        const password = control.get('password');
+        const confirmPassword = control.get('confirm');
+        if(!password || !confirmPassword ) return null;
+        return password.value === confirmPassword.value ? null : { mismatchedPasswords: true}
 }
-/* checkbox must be checked */
-export function mustBeChecked(control: FormControl): {[key: string]: string} {
-    if (!control.value) {
-      return {mustBeCheckedError: 'Must be checked'};
-    } else {
-      return null;
-    }
-  }
+
+
+// /* checkbox must be checked */
+// export function mustBeChecked(control: FormControl): {[key: string]: string} {
+//     if (!control.value) {
+//       return {mustBeCheckedError: 'Must be checked'};
+//     } else {
+//       return null;
+//     }
+//   }

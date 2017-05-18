@@ -19,7 +19,7 @@
                         <div class="user-info">
                             <div >
                                 <h1>{{representative.name}}</h1>
-                                <h4>Region: {{representative.region}}</h4>
+                                <h4 *ngIf="representative.region">Region: {{representative.region}}</h4>
                                 <h5>Email: {{representative.email}}</h5>
                             </div>
                         </div>

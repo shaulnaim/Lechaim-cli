@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { validateEmail, matchingPasswords, mustBeChecked } from '../../validators/validators';
+import { validateEmail, matchingPasswords } from '../../validators/validators';
 import { PeopleService } from '../../services/people.service';
 import { Router } from '@angular/router';
 
@@ -21,13 +21,11 @@ export class RepresentativeSignupComponent implements OnInit {
 
   form: FormGroup;
   formErrors = {
-    name: '',
-    email: '',
-    password: '',
-    confirm: '',
-    birthDate: '',
-    acceptence: ''
-
+    name: 'Name is required.',
+    email: 'email is required.',
+    password: 'password is required.',
+    confirm: 'password is required.',
+    avatar: 'avatar is required'
   };
   validationMessages = {
     name: {
@@ -42,18 +40,16 @@ export class RepresentativeSignupComponent implements OnInit {
     confirm: {
       required: 'password is required.',
       minlength: 'password must be at least 6 characters.',
-      validateMatchingPasswords: 'confirm should match the password'
+      mismatchedPasswords: 'confirm should match the password'
     },
     password: {
       required: 'password is required.',
       minlength: 'password must be at least 6 characters.',
-      matchingPasswords: 'confirm should match the password'
+      mismatchedPasswords: 'confirm should match the password'
     },
-    birthDate: {
-      required: 'birthdate is required.'
-    },
-    acceptence: {
-      mustBeCheckedError: 'you must read and check this'
+    avatar: {
+      required: 'avatar url is required.',
+      pattern: 'Must be a png or jpg url'
     }
   };
 
@@ -74,16 +70,16 @@ export class RepresentativeSignupComponent implements OnInit {
       email: ['', [Validators.required, validateEmail]],
       password: ['', [Validators.minLength(6), Validators.required]],
       confirm: ['', [Validators.minLength(6), Validators.required]],
-      birthDate: ['', [Validators.required]],
-      acceptence: ['', [mustBeChecked]]
-    }, { validator: matchingPasswords('password', 'confirm') });
+      avatar: ['', [Validators.required, Validators.pattern('.*\/.*.(png|jpg)')]],
+      region: ['']
+    }, { validator: matchingPasswords });
 
     // watch for changes and validate
     this.form.valueChanges.subscribe(data => this.validateForm());
   }
 
   /**
-   * validate the entire form
+   * validate the entire form and alert with the right message
    */
   validateForm() {
     for (let field in this.formErrors) {
