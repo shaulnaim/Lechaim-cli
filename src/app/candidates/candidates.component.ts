@@ -4,7 +4,6 @@ import { PeopleService } from '../services/people.service';
 import { HeaderComponent } from '../header/header.component';
 import { SharedDataService } from '../shared/shared.service';
 
-
 @Component({
     templateUrl: './candidates.component.html',
     styleUrls: ['./candidates.component.scss'],
@@ -15,7 +14,7 @@ export class CandidatesComponent implements OnInit {
     //public hide = false;
     constructor(
         private authenticationService: AuthenticationService,
-        private peopleService: PeopleService,
+        private peopleService: PeopleService
     ) {}
     isDetailed = false;
     active = "";
@@ -24,6 +23,7 @@ export class CandidatesComponent implements OnInit {
     private backupusers;
     private selected;
     private representative;
+ 
     ngOnInit() {
         this.authenticationService.checkCredentials();
         this.representative = this.getRepresentative();
@@ -42,5 +42,12 @@ export class CandidatesComponent implements OnInit {
     }
     onSelect(newVal, el) {
         this.searched = (typeof (this.selected) == 'object') ? this.selected.name : null;
+    }
+    deleteCandidate(index,userId){
+            this.peopleService.deleteCandidate(userId).subscribe((data) => {
+            if(confirm('are you sure?')) {
+                this.users.splice(index,1);
+            }
+        });
     }
 }

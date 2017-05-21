@@ -53,4 +53,10 @@ export class PeopleService {
             .map(res => res.json())
 
     }
+    deleteCandidate(id:number) {
+      return this.http.delete(Const.BASE_URL + 'people/' + id)
+      .map(res => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }   
 }
+

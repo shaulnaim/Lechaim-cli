@@ -38,6 +38,13 @@
     }
   }
 
+  .deleteBtn {
+    float: right;
+    position: relative;
+    bottom: 115px;
+    right: 25px;
+  }
+
   .user-info {
     margin-left:50px;
     vertical-align: middle;
@@ -47,7 +54,7 @@
       color: $title-name-color;
       padding-top: 20px;
     }
-
+  
     & p {
     text-align: center;
     }
