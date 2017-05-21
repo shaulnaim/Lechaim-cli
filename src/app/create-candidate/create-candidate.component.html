@@ -57,7 +57,7 @@
       </div>
       <div class="form-buttons">
         <span (mouseenter)="mouseoverSubmit=true" (mouseleave)="mouseoverSubmit=false">  
-         <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Save</button>
+         <button type="submit" [disabled]="newCandidateForm.invalid" class="btn btn-primary">Save</button>
         </span>
         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
       </div>

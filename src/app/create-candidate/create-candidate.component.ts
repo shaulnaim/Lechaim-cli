@@ -23,7 +23,6 @@ export class CreateCandidateComponent implements OnInit {
         this.isDirty = false;
         this.birthdate = this.calculateAge(formValues.date);
         formValues.age = this.birthdate
-        console.log(formValues);
         this.peopleService.addCandidate(formValues).subscribe(
             data => {
                 this.isSuccess = true;
