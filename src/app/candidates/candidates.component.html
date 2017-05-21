@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (refreshList)="refreshList()"></app-header>
 <div class="parent">
     <div class="right">
         <input ng2-auto-complete #focusable id="searchInput" class="form-control mb-2 mr-sm-2 mb-sm-0 search-input" [(ngModel)]="selected"

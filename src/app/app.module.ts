@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
-import { DeactivateRouteWhenDirty  } from './shared/shared.service';
+import { DeactivateRouteWhenDirty } from './shared/shared.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CandidatesComponent } from './candidates/candidates.component';
@@ -35,7 +35,6 @@ import { DetailsResolver } from './services/details-resolver.service';
     PeopleService,
     DetailsResolver,
     AuthGuard,
-    CandidatesComponent,
     {
       provide: 'canDeactivateCreateCandidate',
       useValue: DeactivateRouteWhenDirty.checkDirtyState
@@ -43,7 +42,7 @@ import { DetailsResolver } from './services/details-resolver.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 
 

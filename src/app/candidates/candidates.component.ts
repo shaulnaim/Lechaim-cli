@@ -50,4 +50,7 @@ export class CandidatesComponent implements OnInit {
             }
         });
     }
+    refreshList() {
+        this.ngOnInit();
+    }
 }
