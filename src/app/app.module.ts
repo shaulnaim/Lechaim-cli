@@ -13,7 +13,6 @@ import { CandidateDetailsComponent } from './candidate-details/candidate-details
 import { AuthenticationService } from './services/authentication.service';
 import { PeopleService } from './services/people.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { dummyComponent } from './dummy/dummy.component';
 import { AuthGuard } from './route-guards/auth.guard';
 import { DetailsResolver } from './services/details-resolver.service';
 
@@ -24,8 +23,7 @@ import { DetailsResolver } from './services/details-resolver.service';
     CreateCandidateComponent,
     AppComponent,
     CandidateDetailsComponent,
-    SearchFilterPipe,
-    dummyComponent
+    SearchFilterPipe
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
@@ -37,6 +35,7 @@ import { DetailsResolver } from './services/details-resolver.service';
     PeopleService,
     DetailsResolver,
     AuthGuard,
+    CandidatesComponent,
     {
       provide: 'canDeactivateCreateCandidate',
       useValue: DeactivateRouteWhenDirty.checkDirtyState

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../shared/shared.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { CandidatesComponent } from '../candidates/candidates.component'
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,18 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class HeaderComponent {
   constructor(private router: Router,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService,
+              private candidates:CandidatesComponent) { }
   private representative;
   public hide = false;
 
   changeRoute(url) {
     this.setRepresentative(null);
-    this.router.navigateByUrl('/dummy', { skipLocationChange: true });//for reload page with all list
-    setTimeout(() => this.router.navigate([url]));// will not work without this
+    if (url=="/Candidates")
+      this.candidates.ngOnInit();
+    else {
+      this.router.navigate([url]);
+    }
   }
 
   setRepresentative(value) {
